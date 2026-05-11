@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RND Synth Evolution</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+    <div class="controls lang-switcher">
+        <div class="control-pill">
+            <span class="lang-btn active" onclick="setLang('ru')">RU</span>
+            <span class="lang-btn" onclick="setLang('en')">EN</span>
+            <span class="lang-btn" onclick="setLang('fr')">FR</span>
+            <span class="lang-btn" onclick="setLang('zh')">ZH</span>
+        </div>
+    </div>
+    <div class="controls theme-switcher">
+        <div class="control-pill">
+            <div id="dot-dark" class="theme-dot bg-zinc-900" onclick="handleThemeClick('dark')"></div>
+            <div id="dot-light" class="theme-dot bg-zinc-100" onclick="handleThemeClick('light')"></div>
+            <div id="dot-cyber" class="theme-dot bg-cyan-400" onclick="handleThemeClick('cyber')"></div>
+        </div>
+    </div>
+    <div id="adminPanel">
+        <div class="flex justify-between mb-6">
+            <h2 id="admin-title" class="text-[10px] font-bold uppercase tracking-widest text-white">Engine</h2>
+            <button onclick="toggleAdmin()" id="admin-close" class="text-[10px] opacity-50 underline text-white">CLOSE</button>
+        </div>
+        <div class="space-y-6 text-[10px] uppercase tracking-tighter text-white">
+            <div><label id="label-filter">Filter</label><input type="range" min="100" max="4000" value="1200" oninput="updateParam('filter', this.value)"></div>
+            <div><label id="label-reverb">Reverb</label><input type="range" min="0" max="1" step="0.01" value="0.4" oninput="updateParam('reverb', this.value)"></div>
+            <div><label id="label-release">Release</label><input type="range" min="1" max="10" step="0.5" value="6" oninput="updateParam('release', this.value)"></div>
+        </div>
+    </div>
+    <canvas id="canvas"></canvas>
+    <div class="center-stage">
+        <h1 id="main-title" class="text-[10px] tracking-[0.8em] uppercase mb-24 opacity-40">RND Evolution</h1>
+        <button id="rndButton" class="btn-rnd">RND</button>
+        <div id="info" class="mt-24 font-mono text-[9px] uppercase tracking-[0.3em] opacity-30">Ready</div>
+    </div>
+    <div class="footer">
+        <p id="credits" class="text-[9px] uppercase tracking-[0.2em] opacity-20">Спасибо Rozetked за идею!</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
